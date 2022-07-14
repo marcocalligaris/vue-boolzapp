@@ -10,8 +10,61 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body>
-    
+<body class="py-4">
+    <main>
+        <div class="container d-flex">
+
+            <!-- * Menu utente -->
+
+            <div class="left-col" id="user-menu">
+                <nav>
+                    <div class="user-card d-flex align-items-center">
+                        <img src="img/avatar_8.jpg" alt="user photo">
+                        <h6>Nome utente</h6>
+                    </div>
+                    <div class="nav-menu d-flex align-items-center">
+                        <i class="fa-solid fa-circle-notch me-3"></i>
+                        <a href="#"><i class="fa-solid fa-message me-3"></i></a>
+                        <a href="#"><i class="fa-solid fa-ellipsis-vertical me-3"></i></a>
+                    </div>
+                </nav>
+                <div class="d-flex align-items-center p-3" id="desktop-alert">
+                    <div class="bell"><i class="fa-solid fa-bell-slash"></i></div>
+                    <div>
+                        <h6>Ricevi notifiche di nuovi messaggi</h6>
+                        <a href="#">Attiva notifiche desktop</a>
+                    </div>
+                </div>
+                <div class="p-1" id="search">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+
+            <!-- * Display delle chat -->
+
+            <div class="right-col" id="chat-area">
+                <nav>
+                    <div class="user-card d-flex align-items-center">
+                        <img src="img/avatar_8.jpg" alt="user photo">
+                        <div>
+                            <h6>Nome utente</h6>
+                            <span class="text-muted">Ultimo accesso oggi alle</span>
+                        </div>
+                    </div>
+                    <div class="nav-menu d-flex align-items-center">
+                        <a href="#"><i class="fa-solid fa-magnifying-glass me-3"></i></a>
+                        <a href="#"><i class="fa-solid fa-paperclip me-3"></i></a>
+                        <a href="#"><i class="fa-solid fa-ellipsis-vertical me-3"></i></a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </main>
 
     <script src="js/script.js"></script>
 </body>
