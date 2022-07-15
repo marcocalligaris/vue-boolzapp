@@ -1,28 +1,29 @@
 body {
     height: 100vh;
-    background: linear-gradient(
+    background-image: linear-gradient(
         #009688,
         #009688 15%,
         #DADBD5 15%,
         #DADBD5
-    );
+        );
 }
 
 .container {
-    height: 900px;
+    height: 100%;
 }
 
 .left-col {
-    width: 35%;
-    background-color: #fff;
+    width: 40%;
+    background-color: #FAFAFA;
+    border-right: 1px solid royalblue;
 }
 
 .right-col {
-    width: 65%;
+    width: 60%;
+    background-image: url(../img/mine.jpg);
 }
 
 .left-col, .right-col {
-    border: 1px dashed black;
     height: 100%;
 }
 
@@ -33,11 +34,23 @@ nav {
     padding: 10px;
 }
 
-nav i {
+i {
     color: #B1B1B1;
+    font-size: 22px;
 }
 
-.user-card img {
+.media-card {
+    height: 90px;
+    display: flex;
+    align-items: center;
+}
+
+.media-card figure {
+    height: 60px;
+    padding: 5px;
+}
+
+.media-card img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -46,6 +59,8 @@ nav i {
 
 #desktop-alert {
     background-color: #8EDAFC;
+    padding: 15px;
+    height: 140px;
 }
 
 .bell {
@@ -63,10 +78,31 @@ nav i {
     color: #8EDAFC;
 }
 
-#search i {
-    color: #B1B1B1;
+#chat-list {
+    background-color: #fff;
 }
 
-#chat-area {
-    background-image: url(../img/mine.jpg);
+.msg-card {
+    display:flex;
+}
+
+.msg-card.sent {
+    justify-content: flex-end;
+}
+
+.msg-card.received {
+    justify-content: flex-start;
+}
+
+.msg-card.sent .msg {
+    background-color: #d5f9ba;
+}
+
+.msg-card.received .msg {
+    background-color: #fff;
+}
+
+footer {
+    height: 80px;
+    background-color: #F3EEEA;
 }

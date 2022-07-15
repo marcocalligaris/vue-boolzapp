@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Boolzapp</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
-<body class="py-4">
-    <main>
-        <div class="container d-flex">
+<body class="py-5">
+    <main class="h-100">
+        <div class="container d-flex" id="root">
 
             <!-- * Menu utente -->
 
-            <div class="left-col" id="user-menu">
+            <div class="left-col d-flex flex-column" id="user-menu">
                 <nav>
-                    <div class="user-card d-flex align-items-center">
-                        <img src="img/avatar_8.jpg" alt="user photo">
-                        <h6>Nome utente</h6>
+                    <div class="media-card">
+                        <figure>
+                            <img :src="`img/avatar${user.avatar}.jpg`" :alt="user.name">
+                        </figure>
+                        <div class="h5">{{ user.name }}</div>
                     </div>
                     <div class="nav-menu d-flex align-items-center">
                         <i class="fa-solid fa-circle-notch me-3"></i>
@@ -28,31 +30,40 @@
                         <a href="#"><i class="fa-solid fa-ellipsis-vertical me-3"></i></a>
                     </div>
                 </nav>
-                <div class="d-flex align-items-center p-3" id="desktop-alert">
-                    <div class="bell"><i class="fa-solid fa-bell-slash"></i></div>
+                <div class="media-card" id="desktop-alert">
+                        <div class="bell"><i class="fa-solid fa-bell-slash"></i></div>
                     <div>
-                        <h6>Ricevi notifiche di nuovi messaggi</h6>
+                        <div class="h5 m-0">Ricevi notifiche di nuovi messaggi</div>
                         <a href="#">Attiva notifiche desktop</a>
                     </div>
+
                 </div>
                 <div class="p-1" id="search">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">
-                            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                        </span>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
+                    <!-- <i class="fa-solid fa-magnifying-glass me-3"></i> -->
+                    <input class="form-control" type="text" placeholder="Cerca o inizia una nuova chat">
+                </div>
+                <div id="chat-list" class="flex-grow-1 overflow-auto">
+                    <ul class="p-3">
+                        <li v-for="contact in contacts" class="media-card">
+                            <figure>
+                                <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
+                            </figure>
+                            <div class="h5">{{ contact.name }}</div>
+                        </li>
+                    </ul>   
                 </div>
             </div>
 
             <!-- * Display delle chat -->
-
-            <div class="right-col" id="chat-area">
+            
+            <div class="right-col d-flex flex-column" id="chat-area">
                 <nav>
-                    <div class="user-card d-flex align-items-center">
-                        <img src="img/avatar_8.jpg" alt="user photo">
+                    <div class="media-card">
+                        <figure>
+                            <img src="img/avatar_1.jpg" alt="user photo">
+                        </figure>
                         <div>
-                            <h6>Nome utente</h6>
+                            <div class="h5">Michele</div>
                             <span class="text-muted">Ultimo accesso oggi alle</span>
                         </div>
                     </div>
@@ -62,6 +73,23 @@
                         <a href="#"><i class="fa-solid fa-ellipsis-vertical me-3"></i></a>
                     </div>
                 </nav>
+                <div class="messages flex-grow-1 overflow-auto" id="msg-list">
+                    <ul class="p-3">
+                        <li>
+                            <div class="msg-card p-3 sent">
+                                <div class="msg py-2 px-3 rounded-3">
+                                    <p>Hai portato a spasso il cane?</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <footer class=" py-2 px-5 d-flex justify-content-between align-items-center">
+                    <a href="#"><i class="fa-regular fa-face-smile"></i></a>
+                    <input class="form-control form-control-lg w-75" type="text" placeholder="Scrivi un messaggio">
+                    <a href="#"><i class="fa-solid fa-microphone"></i></a>
+                </footer>
             </div>
         </div>
     </main>
