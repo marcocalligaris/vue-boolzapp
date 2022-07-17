@@ -44,7 +44,7 @@
                 </div>
                 <div id="chat-list" class="flex-grow-1 overflow-auto">
                     <ul class="p-3">
-                        <li v-for="contact in contacts" class="media-card">
+                        <li v-for="(contact, index) in contacts" class="media-card" role="button" @click="showCurrentContact(index)">
                             <figure>
                                 <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                             </figure>
@@ -73,12 +73,13 @@
                         <a href="#"><i class="fa-solid fa-ellipsis-vertical me-3"></i></a>
                     </div>
                 </nav>
-                <div class="messages flex-grow-1 overflow-auto" id="msg-list">
+                <div class="flex-grow-1 overflow-auto" id="msg-list">
                     <ul class="p-3">
-                        <li>
-                            <div class="msg-card p-3 sent">
+                        <li v-for="message in contacts[currentIndex].messages">
+                            <div class="msg-card p-3" :class="{'sent' : message.status === 'sent', 'received': message.status === 'received'}">
                                 <div class="msg py-2 px-3 rounded-3">
-                                    <p>Hai portato a spasso il cane?</p>
+                                    <p class="fw-semibold">{{message.text}}</p>
+                                    <p class="fs-7 text-muted m-0">{{message.date}}</p>
                                 </div>
                             </div>
                         </li>
@@ -97,3 +98,4 @@
     <script src="js/script.js"></script>
 </body>
 </html>
+

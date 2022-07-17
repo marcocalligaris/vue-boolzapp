@@ -8,6 +8,10 @@ body {
         );
 }
 
+ul {
+    list-style-type: none;
+}
+
 .container {
     height: 100%;
 }
