@@ -88,13 +88,21 @@ const app = new Vue ({
       },
     ],
     currentIndex: 0,
-    newMsg: '',
+    newMsgText: '',
   },
   methods: {
     showCurrentContact(index) {
       this.currentIndex = index;
     },
+    sendNewMsg() {
+      if(!this.newMsgText) return;
+      const newMessage = {
+        text: this.newMsgText,
+        status: 'sent',
+        date: '18/07/2022 12:00:00'
+      }
+      this.contacts[this.currentIndex].messages.push(newMessage);
+      this.newMsgText = '';
     }
-    
-  }
+    },
 })
