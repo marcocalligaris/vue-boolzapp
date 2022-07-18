@@ -40,7 +40,7 @@
                 </div>
                 <div class="p-1 d-flex align-items-center position-relative" id="search">
                     <i class="fa-solid fa-magnifying-glass me-3 position-absolute ps-2"></i>
-                    <input class="form-control ps-5" type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input class="form-control ps-5" type="text" placeholder="Cerca o inizia una nuova chat" v-model.trim="searchString" @keyup="filteredContacts">
                 </div>
                 <div id="chat-list" class="flex-grow-1 overflow-auto">
                     <ul class="p-3">

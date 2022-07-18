@@ -89,6 +89,7 @@ const app = new Vue ({
     ],
     currentIndex: 0,
     newMsgText: '',
+    searchString: '',
   },
   methods: {
     showCurrentContact(index) {
@@ -114,5 +115,13 @@ const app = new Vue ({
     autoMsg() {
       setTimeout(() => this.addNewMsg('ok', 'received'), 1000);
     },
-    },
+
+    filteredContacts() {
+      this.contacts.filter((contact) => {
+        if (contact.name.includes(this.searchString));
+        this.visible = true;
+      })
+    }
+  },
+  
 })
