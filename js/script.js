@@ -88,10 +88,13 @@ const app = new Vue ({
       },
     ],
     currentIndex: 0,
+    newMsg: '',
   },
   methods: {
     showCurrentContact(index) {
       this.currentIndex = index;
     },
+    }
+    
   }
 })

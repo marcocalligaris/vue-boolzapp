@@ -38,9 +38,9 @@
                     </div>
 
                 </div>
-                <div class="p-1" id="search">
-                    <!-- <i class="fa-solid fa-magnifying-glass me-3"></i> -->
-                    <input class="form-control" type="text" placeholder="Cerca o inizia una nuova chat">
+                <div class="p-1 d-flex align-items-center position-relative" id="search">
+                    <i class="fa-solid fa-magnifying-glass me-3 position-absolute ps-2"></i>
+                    <input class="form-control ps-5" type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <div id="chat-list" class="flex-grow-1 overflow-auto">
                     <ul class="p-3">
@@ -88,7 +88,7 @@
 
                 <footer class=" py-2 px-5 d-flex justify-content-between align-items-center">
                     <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-                    <input class="form-control form-control-lg w-75" type="text" placeholder="Scrivi un messaggio">
+                    <input class="form-control form-control-lg w-75" type="text" placeholder="Scrivi un messaggio" v-model="newMsg" v-for="message in contacts[currentIndex].messages" @keyup.enter="addNewMsg">
                     <a href="#"><i class="fa-solid fa-microphone"></i></a>
                 </footer>
             </div>
