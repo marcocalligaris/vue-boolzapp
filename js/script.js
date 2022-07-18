@@ -94,15 +94,25 @@ const app = new Vue ({
     showCurrentContact(index) {
       this.currentIndex = index;
     },
-    sendNewMsg() {
-      if(!this.newMsgText) return;
+
+    addNewMsg(text, status) {
       const newMessage = {
-        text: this.newMsgText,
-        status: 'sent',
+        text: text,
+        status: status,
         date: '18/07/2022 12:00:00'
       }
       this.contacts[this.currentIndex].messages.push(newMessage);
+    },
+
+    sendNewMsg() {
+      if(!this.newMsgText) return;
+      this.addNewMsg(this.newMsgText, 'sent');
       this.newMsgText = '';
-    }
+      this.autoMsg();
+    },
+    
+    autoMsg() {
+      setTimeout(() => this.addNewMsg('ok', 'received'), 1000);
+    },
     },
 })
