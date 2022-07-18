@@ -88,7 +88,7 @@
 
                 <footer class=" py-2 px-5 d-flex justify-content-between align-items-center">
                     <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-                    <input class="form-control form-control-lg w-75" type="text" placeholder="Scrivi un messaggio" v-model.trim="newMsgText" @keyup.enter="sendNewMsg">
+                    <input class="form-control form-control-lg w-75" type="text" placeholder="Scrivi un messaggio" v-model.trim="newMsgText" @keyup.esc="newMsgText = ''" @keyup.enter="sendNewMsg">
                     <a href="#"><i class="fa-solid fa-microphone"></i></a>
                 </footer>
             </div>
