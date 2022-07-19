@@ -5,9 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boolzapp</title>
+
+    <!-- * Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- * Fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- * Style -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- * DayJS -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/plugin/customParseFormat.js"></script>
+
+    <!-- * VueJS -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body class="py-5">
@@ -40,11 +52,11 @@
                 </div>
                 <div class="p-1 d-flex align-items-center position-relative" id="search">
                     <i class="fa-solid fa-magnifying-glass me-3 position-absolute ps-2"></i>
-                    <input class="form-control ps-5" type="text" placeholder="Cerca o inizia una nuova chat" v-model.trim="searchString" @keyup="filteredContacts">
+                    <input class="form-control ps-5" type="text" placeholder="Cerca o inizia una nuova chat" v-model.trim="searchString">
                 </div>
                 <div id="chat-list" class="flex-grow-1 overflow-auto">
                     <ul class="p-3">
-                        <li v-for="(contact, index) in contacts" class="media-card" role="button" @click="showCurrentContact(index)">
+                        <li v-if="contact.visible" v-for="(contact, index) in visibleContacts" class="media-card" role="button" @click="showCurrentContact(index)">
                             <figure>
                                 <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
                             </figure>

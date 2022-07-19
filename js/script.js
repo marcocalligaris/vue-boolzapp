@@ -1,3 +1,5 @@
+dayjs.extend(dayjs_plugin_customParseFormat);
+
 const app = new Vue ({
   el: '#root',
   data: {
@@ -90,7 +92,19 @@ const app = new Vue ({
     currentIndex: 0,
     newMsgText: '',
     searchString: '',
+    logTime: '',
   },
+
+  computed: {
+    visibleContacts() {
+      const string = this.searchString.toLowerCase();
+      return this.contacts.map(contact => {
+        contact.visible = contact.name.toLowerCase().includes(string);
+        return contact;
+      });
+    }
+  },
+
   methods: {
     showCurrentContact(index) {
       this.currentIndex = index;
@@ -100,7 +114,7 @@ const app = new Vue ({
       const newMessage = {
         text: text,
         status: status,
-        date: '18/07/2022 12:00:00'
+        date: dayjs(),
       }
       this.contacts[this.currentIndex].messages.push(newMessage);
     },
@@ -115,13 +129,5 @@ const app = new Vue ({
     autoMsg() {
       setTimeout(() => this.addNewMsg('ok', 'received'), 1000);
     },
-
-    filteredContacts() {
-      this.contacts.filter((contact) => {
-        if (contact.name.includes(this.searchString));
-        this.visible = true;
-      })
-    }
   },
-  
 })
